@@ -4,6 +4,7 @@ from werkzeug.utils import secure_filename, send_from_directory
 import os
 import subprocess
 import boto3
+import sys
 
 app = Flask(__name__)
 
@@ -32,11 +33,11 @@ def detect():
     video.save(os.path.join(uploads_dir, secure_filename(video.filename)))
     print(video)
     #subprocess.run("ls", shell=True)
-    subprocess.run(['py', 'detect.py', '--source', os.path.join(uploads_dir, secure_filename(video.filename))], shell=True)
+    subprocess.run([sys.executable, 'detect.py', '--source', os.path.join(uploads_dir, secure_filename(video.filename))], shell=True)
 
     # return os.path.join(uploads_dir, secure_filename(video.filename))
     obj = secure_filename(video.filename)
-    return obj
+    return os.path.join(uploads_dir, secure_filename(video.filename))#obj
     
 @app.route("/detect2", methods=['POST'])
 def detect2():
@@ -56,7 +57,7 @@ def detect2():
     #print(video)
     #subprocess.run("ls", shell=True)
     #os.path.join(uploads_dir, secure_filename(video.filename))
-    subprocess.run(['py', 'detect.py', '--source', url], shell=True)
+    subprocess.run([sys.executable, 'detect.py', '--source', url], shell=True)
 
     # return os.path.join(uploads_dir, secure_filename(video.filename))
     #obj = secure_filename(video.filename)
@@ -65,7 +66,7 @@ def detect2():
 @app.route("/opencam", methods=['GET'])
 def opencam():
     print("here")
-    subprocess.run(['py', 'detect.py', '--source', '0'], shell=True)
+    subprocess.run([sys.executable, 'detect.py', '--source', '0'], shell=True)
     return "done"
     
 
