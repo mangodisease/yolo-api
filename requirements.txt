@@ -60,3 +60,4 @@ wcwidth==0.2.5
 Werkzeug==2.1.2
 flask
 boto3
+gunicorn
