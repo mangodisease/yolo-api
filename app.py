@@ -32,7 +32,7 @@ def detect():
     video.save(os.path.join(uploads_dir, secure_filename(video.filename)))
     print(video)
     #subprocess.run("ls", shell=True)
-    subprocess.run(['python3', 'detect.py', '--source', os.path.join(uploads_dir, secure_filename(video.filename))], shell=True)
+    subprocess.run(['py', 'detect.py', '--source', os.path.join(uploads_dir, secure_filename(video.filename))], shell=True)
 
     # return os.path.join(uploads_dir, secure_filename(video.filename))
     obj = secure_filename(video.filename)
@@ -56,7 +56,7 @@ def detect2():
     #print(video)
     #subprocess.run("ls", shell=True)
     #os.path.join(uploads_dir, secure_filename(video.filename))
-    subprocess.run(['python3', 'detect.py', '--source', url], shell=True)
+    subprocess.run(['py', 'detect.py', '--source', url], shell=True)
 
     # return os.path.join(uploads_dir, secure_filename(video.filename))
     #obj = secure_filename(video.filename)
@@ -72,10 +72,10 @@ def opencam():
 @app.route('/return-files', methods=['GET'])
 def return_file():
     obj = request.args.get('obj')
-    loc = os.path.join("runs/video", obj)
+    loc = os.path.join("static", obj)
     print(loc)
     try:
-        return send_file(os.path.join("runs/video", obj), attachment_filename=obj)
+        return send_file(os.path.join("static", obj), attachment_filename=obj)
         # return send_from_directory(loc, obj)
     except Exception as e:
         return str(e)
@@ -85,5 +85,5 @@ def display_video(filename):
  	print('display_video filename: ' + filename)
  	return redirect(url_for('static/{}'.format(filename), code=200))
 
-if __name__ == "__main__":
-	app.run(host="0.0.0.0", port="8080", debug=True)
+#if __name__ == "__main__":
+#	app.run(host="0.0.0.0", port="8080", debug=True)

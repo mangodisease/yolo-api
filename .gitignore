@@ -255,7 +255,8 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
+Include
+Lib 
 Object-Detection-1
-datasets
-Lib
-Scripts
+Scripts 
+datasets 
