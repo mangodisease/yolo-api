@@ -67,7 +67,7 @@ def run(
         visualize=False,  # visualize features
         update=False,  # update all models
         project='static',  # save results to project/name
-        #name='video',  # save results to project/name
+        name='video',  # save results to project/name
         exist_ok=False,  # existing project/name ok, do not increment
         line_thickness=3,  # bounding box thickness (pixels)
         hide_labels=False,  # hide labels
@@ -235,7 +235,7 @@ def parse_opt():
     parser.add_argument('--visualize', action='store_true', help='visualize features')
     parser.add_argument('--update', action='store_true', help='update all models')
     parser.add_argument('--project', default='static', help='save results to project/name')
-    #parser.add_argument('--name', default='video', help='save results to project/name')
+    parser.add_argument('--name', default='video', help='save results to project/name')
     parser.add_argument('--exist-ok', action='store_false', help='existing project/name ok, do not increment')
     parser.add_argument('--line-thickness', default=3, type=int, help='bounding box thickness (pixels)')
     parser.add_argument('--hide-labels', default=False, action='store_true', help='hide labels')
