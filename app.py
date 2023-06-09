@@ -82,3 +82,6 @@ def return_file():
 def display_video(filename):
  	print('display_video filename: ' + filename)
  	return redirect(url_for('static/{}'.format(filename), code=200))
+
+if __name__ == "__main__":
+	app.run(host="0.0.0.0", port="8080")
