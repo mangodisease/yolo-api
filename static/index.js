@@ -22,7 +22,7 @@ window.onload = () => {
           // bytestring = data["status"];
           // image = bytestring.split("'")[1];
           $("#link").css("visibility", "visible");
-          $("#download").attr("href", "detected/video/" + data);
+          $("#download").attr("href", "static/video/" + data);
           console.log(data);
         },
       });

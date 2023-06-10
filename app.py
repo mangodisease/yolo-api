@@ -78,7 +78,7 @@ def det():
     parser.add_argument('--augment', action='store_true', help='augmented inference')
     parser.add_argument('--visualize', action='store_true', help='visualize features')
     parser.add_argument('--update', action='store_true', help='update all models')
-    parser.add_argument('--project', default=ROOT / 'detected', help='save results to project/name')
+    parser.add_argument('--project', default=ROOT / 'static', help='save results to project/name')
     parser.add_argument('--name', default='video', help='save results to project/name')
     parser.add_argument('--exist_ok', action='store_false', help='existing project/name ok, do not increment')
     parser.add_argument('--line_thickness', default=3, type=int, help='bounding box thickness (pixels)')
@@ -249,7 +249,7 @@ def detect_yolo(opt):
     print('uploading to s3')
     #my_path = os.path.abspath(os.path.dirname(__file__))
     #path = os.path.join(my_path, save_path)
-    client.upload_file(save_path, 'yolo', 'detected.mp4')
+    client.upload_file(save_path, 'yolo', 'static.mp4')
 
 @app.route("/detectX", methods=['POST'])
 def detect():
@@ -301,18 +301,18 @@ def return_file():
     loc = os.path.join("static", obj)
     print(loc)
     try:
-        return send_file(os.path.join("detected/video/", obj), attachment_filename=obj)
+        return send_file(os.path.join("static/video/", obj), attachment_filename=obj)
     except Exception as e:
         return str(e)
 
 @app.route('/uploads/<filename>', methods=['GET', 'POST'])
 def download(filename):
-    return send_from_directory(os.path.join("detected/video/", filename),filename, as_attachment=True)
+    return send_from_directory(os.path.join("static/video/", filename),filename, as_attachment=True)
 
 @app.route('/display/<filename>')
 def display_video(filename):
  	print('display_video filename: ' + filename)
- 	return redirect(url_for('detected/video/{}'.format(filename), code=200))
+ 	return redirect(url_for('static/video/{}'.format(filename), code=200))
 
 if __name__ == "__main__":
 	app.run(host="0.0.0.0", port="8080", debug=True)
