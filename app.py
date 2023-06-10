@@ -84,7 +84,7 @@ def return_file():
 @app.route('/display/<filename>')
 def display_video(filename):
  	print('display_video filename: ' + filename)
- 	return redirect(url_for('static/{}'.format(filename), code=200))
+ 	return redirect(url_for('static/video/{}'.format(filename), code=200))
 
-#if __name__ == "__main__":
-#	app.run(host="0.0.0.0", port="8080", debug=True)
+if __name__ == "__main__":
+	app.run(host="0.0.0.0", port="8080", debug=True)
