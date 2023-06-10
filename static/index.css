@@ -1,11 +1,11 @@
 html {
   text-align: center;
-  background-color: #282c34;
+  background-color: #03f0a9;
   color: white;
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #00bb9c;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -26,9 +26,10 @@ html {
 }
 
 input[type="file"] {
-  background-color: #4caf50;
+  background-color: #eef3ef;
+  border-radius: 20;
   border: none;
-  color: white;
+  color: rgb(0, 0, 0);
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
@@ -36,6 +37,7 @@ input[type="file"] {
   font-size: 16px;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin: 40px 40px;
+  
   /* display: none; */
 }
 
@@ -63,9 +65,10 @@ p {
 
 
 .button {
-  background-color: #4CAF50; /* Green */
+  border-radius: 20;
+  background-color: #eeeeee; /* Green */
   border: none;
-  color: white;
+  color: rgb(0, 0, 0);
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;

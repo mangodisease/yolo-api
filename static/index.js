@@ -1,5 +1,22 @@
+video = document.getElementById('video');
+source = document.getElementById('source');
+
+function PlayVideo(srcVideo){
+  video.pause();
+  source.src = srcVideo;
+  video.load();
+  video.play();
+}
+
+function StopVideo(){
+  document.getElementById('video').pause();
+}
+
 window.onload = () => {
+  $("#processing").css("visibility", "hidden");
   $("#sendbutton").click(() => {
+    $("#sendbutton").css("visibility", "hidden");
+    $("#processing").css("visibility", "visible");
     imagebox = $("#imagebox");
     link = $("#link");
     input = $("#imageinput")[0];
@@ -22,26 +39,21 @@ window.onload = () => {
           // bytestring = data["status"];
           // image = bytestring.split("'")[1];
           $("#link").css("visibility", "visible");
+          $("#sendbutton").css("visibility", "visible");
+          $("#processing").css("visibility", "hidden");
           $("#download").attr("href", "static/video/" + data);
-          console.log(data);
+          PlayVideo("static/video/"+ data)
         },
       });
     }
   });
-  $("#opencam").click(() => {
-    console.log("evoked openCam");
-    $.ajax({
-      url: "/opencam",
-      type: "GET",
-      error: function (data) {
-        console.log("upload error", data);
-      },
-      success: function (data) {
-        console.log(data);
-      }
-    });
+  $("#download").click(() => {
+    setTimeout(()=>{
+      window.location.reload()
+    }, 1500)
   })
 };
+
 
 function readUrl(input) {
   imagebox = $("#imagebox");
