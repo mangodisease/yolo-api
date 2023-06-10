@@ -306,6 +306,11 @@ def return_file():
     except Exception as e:
         return str(e)
 
+@app.route('/uploads/<filename>', methods=['GET', 'POST'])
+def download(filename):
+    uploads = os.path.join(current_app.root_path, 'static/video')
+    return send_from_directory(directory=uploads, filename=filename)
+
 @app.route('/display/<filename>')
 def display_video(filename):
  	print('display_video filename: ' + filename)
