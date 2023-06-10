@@ -1,6 +1,6 @@
 from re import DEBUG, sub
-from flask import Flask, render_template, request, redirect, send_file, url_for
-from werkzeug.utils import secure_filename, send_from_directory
+from flask import Flask, render_template, request, redirect, send_file, url_for, send_from_directory
+from werkzeug.utils import secure_filename
 import os
 import subprocess
 import boto3
@@ -246,10 +246,10 @@ def detect_yolo(opt):
         LOGGER.info(f"Results saved to {colorstr('bold', save_dir)}{s}")
     if update:
         strip_optimizer(weights)  # update model (to fix SourceChangeWarning)
-    #print('uploading to s3')
+    print('uploading to s3')
     #my_path = os.path.abspath(os.path.dirname(__file__))
     #path = os.path.join(my_path, save_path)
-    #client.put_object(Body=path, ACL='public-read', Bucket='yolo', Key='detected.mp4')
+    client.upload_file(save_path, 'yolo', 'detected.mp4')
 
 @app.route("/detectX", methods=['POST'])
 def detect():
@@ -307,7 +307,7 @@ def return_file():
 
 @app.route('/uploads/<filename>', methods=['GET', 'POST'])
 def download(filename):
-    return send_from_directory(directory=os.path.join("detected/video/", filename), filename=filename, as_attachment=True)
+    return send_from_directory(os.path.join("detected/video/", filename),filename, as_attachment=True)
 
 @app.route('/display/<filename>')
 def display_video(filename):
