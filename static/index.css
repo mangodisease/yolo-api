@@ -1,22 +1,22 @@
 html {
   text-align: center;
-  background-color: #03f0a9;
-  color: white;
+  background-color: white;
+  color: #03f0a9;
 }
 
 .App-header {
-  background-color: #00bb9c;
-  min-height: 100vh;
+  background-color: rgb(253, 250, 250);
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #000000;
 }
 
 .App-link {
-  color: #61dafb;
+  color: #000000;
 }
 
 .pre_img {
@@ -26,7 +26,7 @@ html {
 }
 
 input[type="file"] {
-  background-color: #eef3ef;
+  background-color: #06ecc6;
   border-radius: 20;
   border: none;
   color: rgb(0, 0, 0);
@@ -44,6 +44,7 @@ input[type="file"] {
 #pre {
   background-color: #4caf50; /* Green */
   border: none;
+  border-radius: 20%;
   color: white;
   padding: 15px 32px;
   text-align: center;
@@ -55,8 +56,12 @@ input[type="file"] {
 }
 
 p {
-  margin: 50px;
-  font-size: 72px;
+  margin: 30px;
+  font-size: 60px;
+}
+
+img {
+  margin-top: 25px;
 }
 
 #link {
@@ -66,8 +71,9 @@ p {
 
 .button {
   border-radius: 20;
-  background-color: #eeeeee; /* Green */
+  background-color: #06ecc6; /* Green */
   border: none;
+  border-radius: 15%;
   color: rgb(0, 0, 0);
   padding: 15px 32px;
   text-align: center;
